@@ -1,10 +1,18 @@
+---
+const { rj } = Astro.props;
+
+const { name, slogan, image } = rj.data;
+
+const { id } = rj;
+---
+
 <div class="relative w-full inline-block border border-gray-200 rounded-xl">
   <a href="#">
     <div class="overflow-hidden bg-gray-50 relative rounded-t-xl">
       <img
         class="w-full rounded-xs"
-        src="/images/rjs/1.jpg"
-        alt="RJ John"
+        src={image}
+        alt={name}
         loading="lazy"
         fetchpriority="low"
       />
@@ -12,8 +20,8 @@
   </a>
   <div class="p-4">
     <a href="#">
-      <h3 class="text-lg/tight font-semibold text-gray-900">RJ John</h3>
+      <h3 class="text-lg/tight font-semibold text-gray-900">{name}</h3>
     </a>
-    <p class="mt-2 text-base/tight text-gray-700">Go john</p>
+    <p class="mt-2 text-base/tight text-gray-700">{slogan}</p>
   </div>
 </div>
