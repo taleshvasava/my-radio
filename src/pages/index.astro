@@ -1,49 +1,197 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from "../layouts/Layout.astro";
+import RJCard from "../components/RJCard.astro";
+import BlogCard from "../components/BlogCard.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main>
+    <!-- banner section start -->
+    <section class="container px-3 md:px-5 mt-6 mb-10 relative z-10">
+      <div class="swiper bannerSwiper relative z-50">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="#" target="_blank" aria-label="Banner name">
+              <img
+                class="w-full object-cover rounded-xl"
+                src="/images/sliders/1.jpg"
+                alt="Slide 1"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" target="_blank" aria-label="Banner name">
+              <img
+                class="w-full object-cover rounded-xl"
+                src="/images/sliders/2.jpg"
+                alt="Slide 2"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="banner-pagination"></div>
+      </div>
+    </section>
+    <!-- banner section end -->
+
+    <!-- RJ section start -->
+    <section class="xl:pb-20 pb-8 md:pb-12">
+      <div class="container px-3 md:px-5">
+        <div class="flex justify-between items-center mb-10">
+          <h2
+            class="text-gray-800 xl:text-4xl xl:leading-tight text-xl md:text-2xl font-bold"
+          >
+            our on-air personalities
+          </h2>
+          <a class="font-semibold text-base text-primary-600" href=""
+            >view all</a
+          >
+        </div>
+        <div class="swiper rj-swiper overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <RJCard :radioJockey="$radioJockey" />
+            </div>
+            <div class="swiper-slide">
+              <RJCard :radioJockey="$radioJockey" />
+            </div>
+            <div class="swiper-slide">
+              <RJCard :radioJockey="$radioJockey" />
+            </div>
+            <div class="swiper-slide">
+              <RJCard :radioJockey="$radioJockey" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- RJ section end -->
+
+    <div class="container px-3 md:px-5">
+      <img
+        class="flex mx-auto my-6 rounded-xl overflow-hidden"
+        src="/images/ads/2.jpg"
+      />
+    </div>
+
+    <!-- Video section start  -->
+    <section class="xl:pb-20 pb-8 md:pb-12">
+      <div class="container px-3 md:px-5">
+        <div class="flex justify-between items-center mb-10">
+          <h2
+            class="text-gray-800 xl:text-4xl xl:leading-tight text-xl md:text-2xl font-bold"
+          >
+            videos
+          </h2>
+          <a class="font-semibold text-base text-primary-600" href=""
+            >view all</a
+          >
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center mx-auto gap-6"
+        >
+          {posts.map((post) => <BlogCard post={post} />)}
+        </div>
+      </div>
+    </section>
+    <!-- Video section end  -->
+
+    <div class="container px-3 md:px-5">
+      <img
+        class="flex mx-auto my-6 rounded-xl overflow-hidden"
+        src="/images/ads/3.jpg"
+      />
+    </div>
+
+    <!-- news section start  -->
+    <section class="xl:pb-20 pb-8 md:pb-12">
+      <div class="container px-3 md:px-5">
+        <div class="flex justify-between items-center mb-10">
+          <h2
+            class="text-gray-800 xl:text-4xl xl:leading-tight text-xl md:text-2xl font-bold"
+          >
+            news
+          </h2>
+          <a class="font-semibold text-base text-primary-600" href=""
+            >view all</a
+          >
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center mx-auto gap-6"
+        >
+          {posts.map((post) => <BlogCard post={post} />)}
+        </div>
+      </div>
+    </section>
+    <!-- news section end  -->
+
+    <div class="container px-3 md:px-5">
+      <img
+        class="flex mx-auto my-6 rounded-xl overflow-hidden"
+        src="/images/ads/4.jpg"
+      />
+      <p class="text-base/6 text-gray-700">
+        our mission is to provide a quality, community-supported radio service
+        that will enrich the lives of south east asians through the transmission
+        of music, news, information, and entertainment. our programming is
+        tailored to meet the needs of our listeners, and we strive to provide a
+        listening experience that is both informative and entertaining. we
+        believe that radio dil is the best way to connect with the indian
+        subcontinent and its people, and we are committed to providing our
+        listeners with the best possible experience.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    import Swiper from "swiper";
+
+    window.addEventListener("DOMContentLoaded", () => {
+      new Swiper(".bannerSwiper", {
+        loop: true,
+        speed: 1000,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".banner-pagination",
+          clickable: true,
+        },
+      });
+
+      new Swiper(".rj-swiper", {
+        loop: true,
+        slidesPerView: 4,
+        spaceBetween: 12,
+        breakpoints: {
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 12,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 18,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+        },
+      });
+    });
+  </script>
+</Layout>

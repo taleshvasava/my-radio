@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="contact us" description="contact us">
+  <section class="mt-8">
+    <div class="container px-3 md:px-5">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="relative px-6">
+          <div class="mx-auto lg:mx-0">
+            <h2
+              class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl mb-6"
+            >
+              advertise with us
+            </h2>
+            <div class="space-y-6">
+              <div>
+                <h3
+                  class="border-l border-primary-600 pl-6 font-semibold text-gray-900"
+                >
+                  request hotline
+                </h3>
+                <address
+                  class="border-l border-gray-200 pt-2 pl-6 text-gray-600 not-italic"
+                >
+                  <p>(732)-800-1008</p>
+                  <p>request@radiodil.com</p>
+                </address>
+              </div>
+              <div>
+                <h3
+                  class="border-l border-primary-600 pl-6 font-semibold text-gray-900"
+                >
+                  general information
+                </h3>
+                <address
+                  class="border-l border-gray-200 pt-2 pl-6 text-gray-600 not-italic"
+                >
+                  <p>(732)-800-1008</p>
+                  <p>info@radiodil.com</p>
+                </address>
+              </div>
+              <div>
+                <h3
+                  class="border-l border-primary-600 pl-6 font-semibold text-gray-900"
+                >
+                  sponsorship information
+                </h3>
+                <address
+                  class="border-l border-gray-200 pt-2 pl-6 text-gray-600 not-italic"
+                >
+                  <p>(732)-800-1008</p>
+                  <p>request@radiodil.com</p>
+                </address>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form action="#" method="POST" class="px-6 lg:px-8">
+          <div class="mx-auto">
+            <div class="space-y-4">
+              <div class="space-y-2">
+                <label for="name" class="control-label">name</label>
+
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  autocomplete="name"
+                  class="form-control"
+                />
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="control-label">email</label>
+
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autocomplete="email"
+                  class="form-control"
+                />
+              </div>
+              <div class="space-y-2">
+                <label for="phone-number" class="control-label"
+                  >phone number</label
+                >
+
+                <input
+                  type="tel"
+                  name="phone-number"
+                  id="phone-number"
+                  autocomplete="tel"
+                  class="form-control"
+                />
+              </div>
+              <div class="space-y-2">
+                <label for="subject" class="control-label">subject</label>
+                <input
+                  type="text"
+                  name="subject"
+                  id="subject"
+                  class="form-control"
+                />
+              </div>
+              <div class="space-y-2">
+                <label for="message" class="control-label">message</label>
+
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="3"
+                  class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <button type="submit" class="btn-primary">send message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

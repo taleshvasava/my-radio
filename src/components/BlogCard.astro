@@ -1,0 +1,28 @@
+---
+const { post } = Astro.props;
+
+const { title, heroImage } = post.data;
+
+const { id } = post;
+---
+
+<div class="relative w-full inline-block border border-gray-200 rounded-xl">
+  <a href={`/blog/${id}/`}>
+    <div class="overflow-hidden bg-gray-50 relative rounded-t-xl">
+      <img
+        class="w-full rounded-xs"
+        src={heroImage}
+        alt={title}
+        loading="lazy"
+        fetchpriority="low"
+      />
+    </div>
+  </a>
+  <div class="p-4">
+    <a href="#">
+      <h3 class="text-base/tight font-semibold text-gray-800 line-clamp-2">
+        {title}
+      </h3>
+    </a>
+  </div>
+</div>
