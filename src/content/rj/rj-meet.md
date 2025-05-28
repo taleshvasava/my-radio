@@ -1,0 +1,7 @@
+---
+name: "RJ Meet"
+slogan: "sharing laugh"
+image: "/images/rjs/RJ-1.jpg"
+---
+
+dfghfghfghfgh

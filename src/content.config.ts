@@ -22,10 +22,9 @@ const rj = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		name: z.string(),
-		description: z.string(),
+		slogan: z.string(),
 		// Transform string to Date object
-		pubDate: z.coerce.date(),
-		Image: z.string().optional(),
+		image: z.string().optional(),
 	}),
 });
 
