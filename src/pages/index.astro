@@ -4,13 +4,12 @@ import RJCard from "../components/RJCard.astro";
 import BlogCard from "../components/BlogCard.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-import "swiper/css";
-import "swiper/css/pagination";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const rjs = (await getCollection("rj")).slice(0, 4);
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -60,18 +59,13 @@ const posts = (await getCollection("blog")).sort(
         </div>
         <div class="swiper rj-swiper overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <RJCard :radioJockey="$radioJockey" />
-            </div>
-            <div class="swiper-slide">
-              <RJCard :radioJockey="$radioJockey" />
-            </div>
-            <div class="swiper-slide">
-              <RJCard :radioJockey="$radioJockey" />
-            </div>
-            <div class="swiper-slide">
-              <RJCard :radioJockey="$radioJockey" />
-            </div>
+            {
+              rjs.map((rj) => (
+                <div class="swiper-slide">
+                  <RJCard rj={rj} />
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -155,43 +149,4 @@ const posts = (await getCollection("blog")).sort(
       </p>
     </div>
   </main>
-
-  <script>
-    import Swiper from "swiper";
-
-    window.addEventListener("DOMContentLoaded", () => {
-      new Swiper(".bannerSwiper", {
-        loop: true,
-        speed: 1000,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".banner-pagination",
-          clickable: true,
-        },
-      });
-
-      new Swiper(".rj-swiper", {
-        loop: true,
-        slidesPerView: 4,
-        spaceBetween: 12,
-        breakpoints: {
-          480: {
-            slidesPerView: 2,
-            spaceBetween: 12,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 18,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 24,
-          },
-        },
-      });
-    });
-  </script>
 </Layout>
