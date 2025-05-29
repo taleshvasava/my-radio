@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@plugin "@tailwindcss/typography";
-
 @theme {
   --font-display: "Public Sans", sans-serif;
   --font-display2: "DM Sans", sans-serif;
@@ -13,17 +11,17 @@
   --breakpoint-2xl: 1320px;
   --breakpoint-3xl: 1536px;
 
-  --color-primary-50: "#e0f9f2";
-  --color-primary-100: "#c0f2e6";
-  --color-primary-200: "#80e6cc";
-  --color-primary-300: "#40d9b3";
-  --color-primary-400: "#20caa0";
-  --color-primary-500: "#20b486";
-  --color-primary-600: "#1e9f76";
-  --color-primary-700: "#1a8361";
-  --color-primary-800: "#15684d";
-  --color-primary-900: "#104e3a";
-  --color-primary-950: "#082d22";
+  --color-primary-50: #ffe5e5;
+  --color-primary-100: #ffb8b8;
+  --color-primary-200: #ff8a8a;
+  --color-primary-300: #ff5c5c;
+  --color-primary-400: #ff0000;
+  --color-primary-500: #e60000;
+  --color-primary-600: #cc0000;
+  --color-primary-700: #b30000;
+  --color-primary-800: #990000;
+  --color-primary-900: #660000;
+  --color-primary-950: #330000;
 
   --color-red-100: "red";
 }
